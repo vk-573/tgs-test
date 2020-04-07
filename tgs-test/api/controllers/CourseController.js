@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-    getAll: async function(req, res) {
-        console.log("hohho");
-        res.send(200).json("okat");
-    }
+    get: async function(req, res) {
+        console.log("get courses");
+        res.send(200);
+    },
 };
 
