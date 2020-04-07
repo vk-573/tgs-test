@@ -26,8 +26,8 @@ const coursesValidation = data => {
         startFullAddress:   Joi.string().allow('').optional().max(300),
         startZipCode:       Joi.string().allow('').optional().max(32),
         endFullAddress:     Joi.string().allow('').optional().max(300),
-        startZipCode:       Joi.string().allow('').optional().max(32),
         startDate:          Joi.string().allow('').optional().max(56),
+        filterBy:           Joi.string().allow('').optional().max(56),
     });
     return course.validate(data);
 }

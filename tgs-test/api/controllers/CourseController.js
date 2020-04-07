@@ -17,6 +17,7 @@ module.exports = {
             startZipCode: req.body.startZipCode,
             endFullAddress: req.body.endFullAddress,
             startDate: req.body.startDate,
+            filterBy: req.body.filterBy
         }
 
         // request data validation

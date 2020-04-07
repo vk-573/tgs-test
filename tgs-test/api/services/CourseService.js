@@ -12,18 +12,30 @@ module.exports = {
                 'x-api-key': TGS_apiKey,
             }};
             body = {
-                "startLatitude": 48.870377,
-                "startLongitude": 2.370615,
-                "endLatitude": 48.882719,
-                "endLongitude": 2.322451,
-                "startFullAddress": "141%20avenue%20parmentier%2C%20Paris%2C%2075010%2C%20France",
-                "startZipCode": "75012",
-                "endFullAddress": "141%20avenue%20parmentier%2C%20Paris%2C%2075010%2C%20France",
-                "startDate": "2020-04-08T12:48:21.000Z"
+                "startLatitude": data.startLatitude,
+                "startLongitude": data.startLongitude,
+                "endLatitude": data.endLatitude,
+                "endLongitude": data.endLongitude,
+                "startFullAddress": encodeURI(data.startFullAddress),
+                "startZipCode": data.startZipCode,
+                "endFullAddress": encodeURI(data.endFullAddress),
+                "startDate": data.startDate,
             };
-            console.log("just before request");
+            console.log("data:", body);
             let response = await axios.post(TGS_url + 'getalloffers', body, options);
-            return response.data;
+            // on success
+            if (response.data.statusCode == 200) {
+                let final = response.data.body;
+                if (data.filterBy) {
+                    sails.helpers.coursesSort(final, data.filterBy);
+                }
+                console.log("final:", final);
+                return final;
+            }
+            else {
+                // todo implemment my errors
+                throw {code: response.data.code, err: "error getting offers"};
+            }
         } catch (err) {
             console.log("err:", err);
             throw err;
