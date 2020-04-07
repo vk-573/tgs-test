@@ -1,14 +1,19 @@
-/**
- * CourseController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
+const CourseService = require('../services/CourseService');
 
 module.exports = {
-    get: async function(req, res) {
+    get: function(req, res) {
         console.log("get courses");
-        res.send(200);
+        const data = {
+            test: req.body.test,
+        }
+        CourseService.get(data).then((courses) => {
+            console.log("in res controller:", courses);
+            return res.status(200).send(courses);
+        }).catch((error) => {
+            console.log("in res catch error:", error);
+            // TODO implement error
+            return res.sendStatus(500);
+        });
     },
 };
 
