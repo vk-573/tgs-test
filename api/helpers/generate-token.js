@@ -33,9 +33,7 @@ module.exports = {
       id: inputs.data.id,
       email: inputs.data.email
     };
-    console.log('data:', data);
     const secretJWT = sails.config.TGS.jwtSecret;
-    console.log('secret: ', secretJWT);
     const token = jwt.sign(data, secretJWT, { expiresIn: '3d'});
     return exits.success(token);
   }

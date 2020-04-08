@@ -7,7 +7,6 @@ module.exports = {
     },
 
     login: function(req, res) {
-        console.log("in login");
 
         //filtering data
         const data = {
@@ -31,7 +30,6 @@ module.exports = {
     },
 
     signup: function(req, res) {
-        console.log("in signup");
 
         //filtering data
         const data = {

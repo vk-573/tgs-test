@@ -7,7 +7,6 @@ const TGS_url = sails.config.TGS.url;
 module.exports = {
     get: async function(data) {
         try {
-            console.log("in course Service get");
             options = {headers: {
                 'Content-Type': 'application/json',
                 'x-api-key': TGS_apiKey,
@@ -22,7 +21,6 @@ module.exports = {
                 "endFullAddress": encodeURI(data.endFullAddress),
                 "startDate": data.startDate,
             };
-            console.log("data:", body);
             let response = await axios.post(TGS_url + 'getalloffers', body, options);
             // on success
             if (response.data.statusCode == 200) {
@@ -30,14 +28,12 @@ module.exports = {
                 if (data.filterBy) {
                     sails.helpers.coursesSort(final, data.filterBy);
                 }
-                console.log("final:", final);
                 return final;
             }
             else {
                 throw new TgsError(500, 'Error Getting Offers');
             }
         } catch (err) {
-            console.log("err:", err);
             throw err;
         }
     },

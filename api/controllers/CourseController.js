@@ -5,7 +5,6 @@ module.exports = {
 
     // get courses with body params
     get: function(req, res) {
-        console.log("get courses");
 
         // filtering data
         const data = {
@@ -26,12 +25,10 @@ module.exports = {
             return res.status(400).send(error.message);
         }
 
+        // getting courses
         CourseService.get(data).then((courses) => {
-            console.log("in res controller:", courses);
             return res.status(200).send(courses);
         }).catch((error) => {
-            console.log("in res catch error:", error);
-            // TODO implement error
             return res.myError(error);
         });
     },
