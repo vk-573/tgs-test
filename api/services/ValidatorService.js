@@ -4,7 +4,7 @@ const Joi = require ("@hapi/joi");
 const signupValidation = data => {
     const userCreation = Joi.object({
         email:              Joi.string().required().min(4).max(128).email().lowercase(),
-        hash:               Joi.string().required().min(9).max(128),
+        password:               Joi.string().required().min(9).max(128),
     });
     return userCreation.validate(data);
 }

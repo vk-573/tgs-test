@@ -1,9 +1,5 @@
-/**
- * UserController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
+const { signupValidation } = require('../services/ValidatorService');
+
 
 module.exports = {
     getAll: async function(req, res) {
@@ -18,7 +14,25 @@ module.exports = {
 
     signup: async function(req, res) {
         console.log("in signup");
-        res.sendStatus(200);
+
+        //filtering data
+        const data = {
+            email: req.body.email,
+            password: req.body.password,
+        };
+
+        // user validation
+        const {error} = signupValidation(data);
+        if (error) {
+            return res.status(400).send(error.message);
+        }
+
+        UserService.create(data).then((user) => {
+            res.status(200).send(user);
+        }).catch((error) => {
+            console.log("error:", error);
+            res.status(error.code).send(error.message);
+        });
     }
 };
 

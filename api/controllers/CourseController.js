@@ -7,7 +7,7 @@ module.exports = {
     get: function(req, res) {
         console.log("get courses");
 
-        // filtering request data
+        // filtering data
         const data = {
             startLatitude: req.body.startLatitude,
             startLongitude: req.body.startLongitude,
@@ -20,7 +20,7 @@ module.exports = {
             filterBy: req.body.filterBy
         }
 
-        // request data validation
+        // data validation
         const {error} = coursesValidation(data);
         if (error) {
             return res.status(400).send(error.message);
