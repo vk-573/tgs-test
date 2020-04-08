@@ -13,4 +13,19 @@ module.exports = {
             throw (err);
         }
     },
+
+    login: async function(data) {
+        try {
+            let user = await User.findOne({ email: data.email });
+            if (!user) {
+                throw new TgsError(400, 'invalid email');
+            }
+            if (user.password !== data.password) {
+                throw new TgsError(400, 'invalid password');
+            }
+            return user;
+        } catch (err) {
+            throw (err);
+        }
+    },
 };

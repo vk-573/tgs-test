@@ -1,18 +1,34 @@
-const { signupValidation } = require('../services/ValidatorService');
+const { signupValidation, loginValidation } = require('../services/ValidatorService');
 
 
 module.exports = {
     getAll: async function(req, res) {
-        console.log("get all");
-        res.sendStatus(200);
+        let users = await User.find({});
+        res.status(200).send(users);
     },
 
-    login: async function(req, res) {
+    login: function(req, res) {
         console.log("in login");
-        res.sendStatus(200);
+
+        //filtering data
+        const data = {
+            email: req.body.email,
+            password: req.body.password,
+        };
+
+        // user validation
+        const {error} = loginValidation(data);
+        if (error) {
+            return res.status(400).send(error.message);
+        }
+        UserService.login(data).then((user) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            res.myError(error);
+        });
     },
 
-    signup: async function(req, res) {
+    signup: function(req, res) {
         console.log("in signup");
 
         //filtering data
