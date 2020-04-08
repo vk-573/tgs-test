@@ -18,7 +18,7 @@ module.exports = {
         try {
             let user = await User.findOne({ email: data.email });
             if (!user) {
-                throw new TgsError(400, 'invalid email');
+                throw new TgsError(400, 'email not found');
             }
             if (user.password !== data.password) {
                 throw new TgsError(400, 'invalid password');

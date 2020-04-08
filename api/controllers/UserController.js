@@ -1,6 +1,5 @@
 const { signupValidation, loginValidation } = require('../services/ValidatorService');
 
-
 module.exports = {
     getAll: async function(req, res) {
         let users = await User.find({});
@@ -22,6 +21,9 @@ module.exports = {
             return res.status(400).send(error.message);
         }
         UserService.login(data).then((user) => {
+            // adding auth token to header
+            let token = sails.helpers.generateToken({id: user.id, email: user.email});
+            res.set('tgs-token', token);
             res.sendStatus(200);
         }).catch((error) => {
             res.myError(error);
@@ -44,6 +46,9 @@ module.exports = {
         }
 
         UserService.create(data).then((user) => {
+            // adding auth token to header
+            let token = sails.helpers.generateToken({id: user.id, email: user.email});
+            res.set('tgs-token', token);
             res.status(200).send(user);
         }).catch((error) => {
             res.myError(error);

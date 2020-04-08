@@ -19,4 +19,15 @@ module.exports.policies = {
 
   // '*': true,
 
+  // PRIVATES ROUTES
+
+  // User
+  UserController: { 
+    getAll: 'authToken'
+  },
+
+  // Course
+  CourseController: {    
+    get: 'authToken'
+  },
 };
