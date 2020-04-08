@@ -32,7 +32,7 @@ module.exports = {
         }).catch((error) => {
             console.log("in res catch error:", error);
             // TODO implement error
-            return res.sendStatus(500);
+            return res.myError(error);
         });
     },
 };

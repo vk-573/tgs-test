@@ -1,4 +1,5 @@
 const axios = require("axios");
+const TgsError = require('../services/TgsErrorService');
 
 const TGS_apiKey = sails.config.TGS.apiKey;
 const TGS_url = sails.config.TGS.url;
@@ -33,8 +34,7 @@ module.exports = {
                 return final;
             }
             else {
-                // todo implemment my errors
-                throw {code: response.data.code, err: "error getting offers"};
+                throw new TgsError(500, 'Error Getting Offers');
             }
         } catch (err) {
             console.log("err:", err);

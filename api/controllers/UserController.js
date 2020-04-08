@@ -30,8 +30,7 @@ module.exports = {
         UserService.create(data).then((user) => {
             res.status(200).send(user);
         }).catch((error) => {
-            console.log("error:", error);
-            res.status(error.code).send(error.message);
+            res.myError(error);
         });
     }
 };
