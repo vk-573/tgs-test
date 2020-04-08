@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "b43d6881-d81c-4b11-a3cd-817a02d2a278",
+		"name": "TGS-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOCAL get all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "tgs-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTU4NjM1MTE0NCwiZXhwIjoxNTg2NjEwMzQ0fQ.OLcqdWiUoMBON099Bf5bJ_dgGFfV38EUTEjVAutdTkM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:1337/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOCAL user sign up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"test@gmail.com\",\n\t\"password\":\"azerty123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/user/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOCAL user login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"test@gmail.com\",\n\t\"password\":\"azerty123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOCAL get courses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tgs-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTU4NjM1MTE0NCwiZXhwIjoxNTg2NjEwMzQ0fQ.OLcqdWiUoMBON099Bf5bJ_dgGFfV38EUTEjVAutdTkM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startLatitude\": 43.702020,\r\n    \"startLongitude\": 7.259444,\r\n    \"endLatitude\": 43.695718,\r\n    \"endLongitude\": 7.270264,\r\n    \"startFullAddress\": \"43 Avenue Georges Clemeneau, 06000 Nice France\",\r\n    \"startZipCode\": \"06000\",\r\n    \"endFullAddress\": \"13 Rue Saint-Francois De Paule, 06300 Nice, France\",\r\n    \"filterBy\": \"price\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/course",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROD get courses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tgs-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTU4NjM1NTQ3NSwiZXhwIjoxNTg2NjE0Njc1fQ.ieCzgGWsTdCX_YVbZCukmaIMz3N6haAbe7M5ImYKhBc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startLatitude\": 43.702020,\r\n    \"startLongitude\": 7.259444,\r\n    \"endLatitude\": 43.695718,\r\n    \"endLongitude\": 7.270264,\r\n    \"startFullAddress\": \"43 Avenue Georges Clemeneau, 06000 Nice France\",\r\n    \"startZipCode\": \"06000\",\r\n    \"endFullAddress\": \"13 Rue Saint-Francois De Paule, 06300 Nice, France\",\r\n    \"filterBy\": \"price\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://test-thegoodseat.herokuapp.com/api/course",
+					"protocol": "http",
+					"host": [
+						"test-thegoodseat",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROD user sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\":\"test8@gmail.com\",\r\n\t\"password\":\"azerty123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://test-thegoodseat.herokuapp.com/api/user/signup",
+					"protocol": "http",
+					"host": [
+						"test-thegoodseat",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROD user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\":\"test8@gmail.com\",\r\n\t\"password\":\"azerty123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://test-thegoodseat.herokuapp.com/api/user/login",
+					"protocol": "http",
+					"host": [
+						"test-thegoodseat",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROD Get all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tgs-token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\":\"test8@gmail.com\",\r\n\t\"password\":\"azerty123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://test-thegoodseat.herokuapp.com/api/user",
+					"protocol": "http",
+					"host": [
+						"test-thegoodseat",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
